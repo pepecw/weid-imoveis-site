@@ -36,7 +36,7 @@ export const HeroActions: React.FC<Props> = ({ onStartQuiz }) => {
 
             <Reveal>
                 <a
-                    href="https://wa.me/5547991523220?text=Ol%C3%A1%20Peterson%2C%20gostaria%20de%20conversar%20sobre%20im%C3%B3veis%21"
+                    href="https://wa.me/5547991523220?text=Ol%C3%A1%2C%20Peterson%21%20Vim%20pelo%20site%20da%20Weid%20Im%C3%B3veis%20e%20gostaria%20de%20conversar%20sobre%20im%C3%B3veis."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 flex items-center justify-between hover:bg-white/10 transition-colors group"

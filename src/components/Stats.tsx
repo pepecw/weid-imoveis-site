@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const stats = [
-    { end: 50, suffix: '+', label: 'Imóveis Disponíveis', icon: '🏠' },
-    { end: 200, suffix: '+', label: 'Famílias Atendidas', icon: '👨‍👩‍👧‍👦' },
-    { end: 98, suffix: '%', label: 'Satisfação dos Clientes', icon: '⭐' },
-    { end: null, label: 'Resposta Garantida', icon: '⚡', special: '24h' },
+type StatItem = {
+    end: number | null;
+    suffix?: string;
+    label: string;
+    icon: string;
+    special?: string;
+};
+
+const stats: StatItem[] = [
+    { end: 150, suffix: '+', label: 'Opções no Portfólio', icon: '🏠' },
+    { end: 14, suffix: '+', label: 'Bairros Mapeados', icon: '📍' },
+    { end: 100, suffix: '%', label: 'De Dedicação a Você', icon: '🤝' },
 ];
 
 function Counter({ end, suffix, special, active }: { end: number | null; suffix?: string; special?: string; active: boolean }) {
@@ -76,11 +83,11 @@ export function Stats() {
                 <div className="section-header reveal">
                     <span className="section-tag">📊 Números</span>
                     <h2 className="heading-lg" style={{ marginBottom: '0.5rem' }}>
-                        Resultados que <span className="gradient-text">Falam</span>
+                        Dedicação que <span className="gradient-text">Gera Confiança</span>
                     </h2>
                     <div className="gold-divider" />
                 </div>
-                <div className="grid-4" style={{ textAlign: 'center' }}>
+                <div className="grid-2" style={{ textAlign: 'center', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
                     {stats.map((stat, i) => (
                         <div key={stat.label}
                             className={`card-glass reveal reveal-delay-${i + 1}`}

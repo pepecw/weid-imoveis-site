@@ -1,6 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const WA_LINK = 'https://wa.me/5547999999999?text=Olá!%20Quero%20conversar%20com%20a%20Lia%20da%20Weid%20Imóveis';
+const WA_LINK = 'https://wa.me/5547991523220?text=' + encodeURIComponent('Olá, Peterson! Vim pelo site da Weid Imóveis e quero conversar com a equipe.');
 
 export function CTAFinal() {
     useScrollReveal();
@@ -50,7 +50,7 @@ export function CTAFinal() {
                             className="btn btn-whatsapp"
                             style={{ fontSize: '1.1rem', padding: '1rem 2.25rem', animation: 'float-pulse 2s ease-in-out infinite' }}
                         >
-                            💬 Falar com a Lia no WhatsApp
+                            💬 Falar com o Peterson no WhatsApp
                         </a>
                         <a href="#imoveis"
                             className="btn btn-gold-outline"
@@ -81,7 +81,7 @@ export function CTAFinal() {
                     <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginTop: '3rem', flexWrap: 'wrap' }}>
                         {[
                             { icon: '🔒', text: 'Dados protegidos' },
-                            { icon: '⚡', text: 'Resposta em 24h' },
+                            { icon: '⚡', text: 'Resposta rápida' },
                             { icon: '🏆', text: 'CRECI-SC' },
                         ].map(badge => (
                             <div key={badge.text} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#64748B', fontSize: '0.875rem' }}>

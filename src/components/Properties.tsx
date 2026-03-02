@@ -1,39 +1,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const WA_LINK = 'https://wa.me/5547999999999?text=Olá!%20Quero%20conhecer%20imóveis%20da%20Weid%20Imóveis';
-
-const properties = [
-    {
-        id: 1,
-        image: '/property_sobrado.png',
-        badge: { text: 'Destaque', type: 'gold' },
-        title: 'Sobrado Moderno com Jardim',
-        location: 'Iririú, Joinville',
-        price: 'R$ 340.000',
-        details: { quartos: 3, banheiros: 2, vagas: 2, area: '110m²' },
-        tag: 'MCMV Faixa 3',
-    },
-    {
-        id: 2,
-        image: '/property_apartment.png',
-        badge: { text: 'Novo', type: 'blue' },
-        title: 'Apartamento Luminoso no Centro',
-        location: 'Centro, Joinville',
-        price: 'R$ 215.000',
-        details: { quartos: 2, banheiros: 2, vagas: 1, area: '64m²' },
-        tag: 'MCMV Faixa 2',
-    },
-    {
-        id: 3,
-        image: '/property_beach.png',
-        badge: { text: 'Exclusivo', type: 'gold' },
-        title: 'Casa Contemporânea no Litoral',
-        location: 'São Francisco do Sul, SC',
-        price: 'R$ 480.000',
-        details: { quartos: 3, banheiros: 3, vagas: 2, area: '140m²' },
-        tag: 'Financiamento SBPE',
-    },
-];
+import { Link } from 'react-router-dom';
+import { propertiesData } from '../data/properties';
 
 export function Properties() {
     useScrollReveal();
@@ -54,54 +22,49 @@ export function Properties() {
                 </div>
 
                 <div className="grid-3">
-                    {properties.map((p, i) => (
-                        <div key={p.id} className={`property-card reveal reveal-delay-${i + 1}`}>
-                            <div className="property-image">
-                                <img src={p.image} alt={p.title} loading="lazy" />
-                                <div className="property-badge">
-                                    <span className={`badge badge-${p.badge.type}`}>{p.badge.text}</span>
-                                </div>
-                                {/* Tag overlay */}
-                                <div style={{
-                                    position: 'absolute', bottom: '0.75rem', right: '0.75rem',
-                                    background: 'rgba(10,22,40,0.85)', backdropFilter: 'blur(8px)',
-                                    padding: '0.25rem 0.75rem', borderRadius: '999px',
-                                    fontSize: '0.7rem', fontWeight: 600, color: '#C9A96E',
-                                    border: '1px solid rgba(201,169,110,0.3)',
-                                }}>
-                                    {p.tag}
+                    {propertiesData.slice(0, 3).map((p, i) => (
+                        <div key={p.id} className={`property-card flex flex-col h-full reveal reveal-delay-${i + 1}`}>
+                            <div className="property-image relative h-56 overflow-hidden">
+                                <img
+                                    src={p.featuredImage}
+                                    alt={p.titulo}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute top-4 left-4 flex gap-2">
+                                    {p.destaque_texto && (
+                                        <span className="px-3 py-1 bg-primary/90 text-white text-xs font-bold rounded-full backdrop-blur-md">
+                                            {p.destaque_texto}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
-                            <div className="property-info">
-                                <h3 className="property-title">{p.title}</h3>
-                                <div className="property-location">
-                                    <span>📍</span> {p.location}
+                            <div className="property-info p-6 flex flex-col flex-grow justify-between" style={{ minHeight: '220px' }}>
+                                <div>
+                                    <h3 className="property-title text-xl font-bold mb-2">{p.titulo}</h3>
+                                    <div className="property-location text-gray-400 text-sm mb-4">
+                                        <span>📍</span> {p.bairro}, {p.cidade}
+                                    </div>
+                                    <div className="property-price text-2xl font-bold text-secondary mb-4">
+                                        {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.valor_venda)}
+                                    </div>
                                 </div>
-                                <div className="property-price">{p.price}</div>
-                                <div className="property-details">
-                                    <span className="property-detail">🛏 {p.details.quartos} quartos</span>
-                                    <span className="property-detail">🚿 {p.details.banheiros} ban.</span>
-                                    <span className="property-detail">🚗 {p.details.vagas} vaga</span>
-                                    <span className="property-detail">📐 {p.details.area}</span>
-                                </div>
-                                <a
-                                    href={`${WA_LINK}&text=Olá!%20Tenho%20interesse%20no%20imóvel:%20${encodeURIComponent(p.title)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn btn-gold-outline"
-                                    style={{ width: '100%', fontSize: '0.9rem', padding: '0.75rem' }}
+
+                                <Link
+                                    to={`/imoveis/${p.id}`}
+                                    className="btn btn-gold-outline w-full text-center py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl transition-all border border-white/10 hover:border-white/20"
                                 >
-                                    Ver Detalhes →
-                                </a>
+                                    Ver Detalhes do Imóvel →
+                                </Link>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 <div className="reveal reveal-delay-4" style={{ textAlign: 'center', marginTop: '3rem' }}>
-                    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-gold">
+                    <Link to="/imoveis" className="btn btn-gold">
                         Ver Todos os Imóveis →
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

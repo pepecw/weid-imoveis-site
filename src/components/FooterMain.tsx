@@ -1,4 +1,4 @@
-const WA_LINK = 'https://wa.me/5547999999999?text=Olá!%20Vim%20pelo%20site%20da%20Weid%20Imóveis';
+const WA_LINK = 'https://wa.me/5547991523220?text=' + encodeURIComponent('Olá, Peterson! Vim pelo site da Weid Imóveis e gostaria de conversar.');
 
 const footerLinks = ['Imóveis', 'Como Funciona', 'Quiz', 'Calculadora', 'Sobre'];
 const footerAnchors: Record<string, string> = {
@@ -80,7 +80,7 @@ export function FooterMain() {
                         </h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
                             {[
-                                { icon: '📱', label: 'WhatsApp', value: '(47) 99999-9999', href: WA_LINK },
+                                { icon: '📱', label: 'WhatsApp', value: '(47) 99152-3220', href: WA_LINK },
                                 { icon: '📧', label: 'Email', value: 'contato@weidimoveis.com.br', href: 'mailto:contato@weidimoveis.com.br' },
                                 { icon: '📍', label: 'Localização', value: 'Joinville — SC', href: null },
                             ].map(item => (
@@ -116,7 +116,7 @@ export function FooterMain() {
                         © 2026 Weid Imóveis. Todos os direitos reservados.
                     </p>
                     <p style={{ color: '#64748B', fontSize: '0.8rem' }}>
-                        Feito com 💙 e inteligência artificial
+                        Feito com 💙 para o seu futuro
                     </p>
                 </div>
             </div>

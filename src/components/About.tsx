@@ -21,7 +21,7 @@ export function About() {
                             }} />
                             <img
                                 src="/peterson.png"
-                                alt="Peterson Rosa - Fundador da Weid Imóveis"
+                                alt="Peterson Weidgennant - Fundador da Weid Imóveis"
                                 style={{
                                     width: '100%',
                                     borderRadius: 20,
@@ -42,9 +42,9 @@ export function About() {
                                 zIndex: 2,
                                 textAlign: 'center',
                             }}>
-                                <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>🏆</div>
-                                <div style={{ fontWeight: 700, color: '#C9A96E', fontSize: '0.875rem' }}>+200 Famílias</div>
-                                <div style={{ color: '#94A3B8', fontSize: '0.75rem' }}>Atendidas</div>
+                                <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>🤝</div>
+                                <div style={{ fontWeight: 700, color: '#C9A96E', fontSize: '0.875rem' }}>Especialista</div>
+                                <div style={{ color: '#94A3B8', fontSize: '0.75rem' }}>em Joinville</div>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ export function About() {
                     {/* Text Column */}
                     <div className="reveal-right" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <span className="section-tag" style={{ marginBottom: '1.25rem', alignSelf: 'flex-start' }}>👋 Fundador</span>
-                        <h2 className="heading-lg" style={{ marginBottom: '0.5rem' }}>Peterson Rosa</h2>
+                        <h2 className="heading-lg" style={{ marginBottom: '0.5rem' }}>Peterson Weidgennant</h2>
                         <p style={{ color: '#C9A96E', fontWeight: 600, marginBottom: '1.5rem', fontSize: '1.1rem' }}>
                             Fundador da Weid Imóveis
                         </p>
@@ -87,15 +87,40 @@ export function About() {
                         {/* Quick stats */}
                         <div style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem', flexWrap: 'wrap' }}>
                             {[
-                                { value: '5+', label: 'Anos de exp.' },
+                                { value: '100%', label: 'Transparência' },
                                 { value: 'MCMV', label: 'Especialista' },
-                                { value: '24h', label: 'Resposta' },
+                                { value: '24/7', label: 'Suporte' },
                             ].map(item => (
                                 <div key={item.label} style={{ textAlign: 'center' }}>
                                     <div style={{ fontWeight: 800, fontSize: '1.4rem', color: '#C9A96E' }}>{item.value}</div>
                                     <div style={{ fontSize: '0.8rem', color: '#94A3B8' }}>{item.label}</div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Parceria Sublime Imóveis */}
+                <div className="reveal mt-20 p-8 glass-dark rounded-3xl border border-white/10 relative overflow-hidden">
+                    {/* Background glow */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+
+                    <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                        <div className="md:w-1/3 flex justify-center">
+                            <div className="w-24 h-24 bg-dark border border-gold/20 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(201,169,110,0.15)]">
+                                <span className="text-3xl">🏢</span>
+                            </div>
+                        </div>
+                        <div className="md:w-2/3 text-center md:text-left">
+                            <h3 className="text-2xl font-bold text-white mb-2">
+                                Parceiro Oficial <span className="text-gold">Sublime Imóveis</span>
+                            </h3>
+                            <p className="text-gray-400 mb-4 text-sm md:text-base leading-relaxed">
+                                Para garantir a maior segurança jurídica, um portfólio robusto e a melhor estrutura física para os nossos clientes, a Weid Imóveis atua em parceria forte e direta com a renomada Sublime Imóveis. Reuniões presenciais e assinaturas de contratos são realizadas na nossa sede oficial parceira.
+                            </p>
+                            <div className="inline-flex items-center gap-2 text-sm text-gray-300 bg-white/5 py-2 px-4 rounded-full border border-white/10">
+                                <span className="text-gold">📍</span> Base de Operações Integrada
+                            </div>
                         </div>
                     </div>
                 </div>

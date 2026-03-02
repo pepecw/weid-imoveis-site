@@ -1,6 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const WA_LINK = 'https://wa.me/5547999999999?text=Olá!%20Quero%20conhecer%20imóveis%20da%20Weid%20Imóveis';
 
 interface DiferenciaisProps {
     onOpenQuiz: () => void;
@@ -47,32 +46,39 @@ export function Diferenciais({ onOpenQuiz }: DiferenciaisProps) {
                     </h2>
                     <div className="gold-divider" />
                     <p className="body-lg" style={{ maxWidth: 500, margin: '1rem auto 0' }}>
-                        Tecnologia e atendimento humano trabalhando juntos
+                        Experiência e atendimento focado nos seus objetivos
                     </p>
                 </div>
 
-                <div className="grid-3">
+                <div className="grid-2 md:grid-cols-4 gap-6">
                     {[
                         {
-                            icon: '🤖',
-                            title: 'Atendimento Inteligente',
-                            text: 'Nossa assistente Lia usa inteligência artificial pra encontrar o imóvel perfeito pra você. Disponível 24h, 7 dias por semana.',
-                            badge: '24/7',
+                            icon: '🤝',
+                            title: 'Atendimento Personalizado',
+                            text: 'Nossa equipe entende suas necessidades para encontrar o imóvel perfeito que se encaixe no seu orçamento e momento de vida.',
+                            badge: 'Foco em Você',
                             badgeType: 'blue',
                         },
                         {
                             icon: '🛡️',
                             title: 'Transparência Total',
-                            text: 'Sem surpresas. Você sabe todos os custos desde o primeiro contato: entrada, parcela, ITBI, cartório. Tudo na mesa.',
+                            text: 'Sem surpresas. Explicamos todos os custos e processos com total clareza: entrada, parcelas e taxas. Tudo na mesa para você decidir.',
                             badge: 'Sem Letras Miúdas',
                             badgeType: 'gold',
                         },
                         {
                             icon: '📈',
                             title: 'Especialista em MCMV',
-                            text: 'Dominamos o Minha Casa Minha Vida. Subsídio, FGTS, financiamento. Transformamos burocracia em oportunidade.',
+                            text: 'Dominamos o Minha Casa Minha Vida. Subsídio, FGTS, financiamento. Transformamos burocracia em oportunidade real.',
                             badge: 'Subsídio até R$55k',
                             badgeType: 'gold',
+                        },
+                        {
+                            icon: '👓',
+                            title: 'Visão do Futuro',
+                            text: 'Transformamos virtualmente a casa desejada no seu lar dos sonhos antes mesmo da compra, para que você tenha total certeza da sua escolha.',
+                            badge: 'Tecnologia 3D',
+                            badgeType: 'blue',
                         },
                     ].map((card, i) => (
                         <div key={card.title} className={`card-glass reveal reveal-delay-${i + 1}`} style={{ padding: '2rem' }}>
@@ -110,8 +116,8 @@ export function Diferenciais({ onOpenQuiz }: DiferenciaisProps) {
 
                 {/* CTA bottom */}
                 <div className="reveal" style={{ textAlign: 'center', marginTop: '3rem' }}>
-                    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ fontSize: '1.05rem' }}>
-                        💬 Falar com a Weid Agora
+                    <a href={"https://wa.me/5547991523220?text=" + encodeURIComponent("Olá, Peterson! Vim pelo site da Weid Imóveis e quero um atendimento exclusivo.")} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ fontSize: '1.05rem' }}>
+                        💬 Falar com o Peterson
                     </a>
                 </div>
             </div>

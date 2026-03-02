@@ -88,8 +88,14 @@ export function HowItWorks() {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', position: 'relative', zIndex: 1 }}>
                         {steps.map((step, i) => (
                             <div key={step.title}
-                                className={`reveal reveal-delay-${i + 1} ${activeStep >= i ? 'step-active' : ''}`}
-                                style={{ textAlign: 'center', padding: '0 1rem' }}>
+                                className={activeStep >= i ? 'step-active' : ''}
+                                style={{
+                                    textAlign: 'center',
+                                    padding: '0 1rem',
+                                    opacity: activeStep >= i ? 1 : 0,
+                                    transform: activeStep >= i ? 'translateY(0)' : 'translateY(20px)',
+                                    transition: 'opacity 0.6s ease, transform 0.6s ease'
+                                }}>
                                 <div className="step-icon-wrapper" style={{
                                     fontSize: activeStep >= i ? '2rem' : '1.75rem',
                                     filter: activeStep >= i ? 'drop-shadow(0 0 12px rgba(201,169,110,0.5))' : 'none',

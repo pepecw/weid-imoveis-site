@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const WA_LINK = 'https://wa.me/5547999999999?text=';
+const WA_LINK = 'https://wa.me/5547991523220?text=';
 
 function formatCurrency(value: number) {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(value);
@@ -14,18 +14,21 @@ function calcMCMVFaixa(renda: number) {
     return 'Financiamento SBPE';
 }
 
-function calcResults(renda: number, entrada: number, hasFgts: boolean) {
-    const parcelaMax = renda * 0.30;
-    const valorFinanciado = parcelaMax * 200;
-    const fgtsEstimado = hasFgts ? Math.min(renda * 12 * 0.08 * 3, 30000) : 0;
-    const total = valorFinanciado + entrada + fgtsEstimado;
+// Updated to more closely match Caixa simulations
+function calcResults(renda: number, entrada: number, fgts: number) {
+    // Estimativa baseada na Caixa (ex: Renda 3800 -> Parcela ~1020 -> Financia ~168k)
+    const parcelaMax = renda * 0.27; // Comprometimento ideal em torno de 27%
+    const valorFinanciado = parcelaMax * 163; // Multiplicador base para prazo de 420 meses
+
+    // O poder de compra é o que o banco financia + o que o cliente tem em mãos
+    const poderCompra = valorFinanciado + entrada + fgts;
     const programa = calcMCMVFaixa(renda);
 
     return {
-        total: Math.round(total / 1000) * 1000,
+        poderCompra: Math.round(poderCompra / 1000) * 1000,
+        valorFinanciado: Math.round(valorFinanciado / 1000) * 1000,
         parcela: Math.round(parcelaMax),
         programa,
-        fgts: Math.round(fgtsEstimado),
     };
 }
 
@@ -33,6 +36,7 @@ export function Calculator() {
     const [renda, setRenda] = useState(3000);
     const [entrada, setEntrada] = useState(20000);
     const [hasFgts, setHasFgts] = useState(false);
+    const [fgtsValue, setFgtsValue] = useState(15000);
     const [updated, setUpdated] = useState(false);
 
     useScrollReveal();
@@ -42,10 +46,10 @@ export function Calculator() {
         setTimeout(() => setUpdated(false), 500);
     }, []);
 
-    const { total, parcela, programa, fgts } = calcResults(renda, entrada, hasFgts);
+    const { poderCompra, valorFinanciado, parcela, programa } = calcResults(renda, entrada, hasFgts ? fgtsValue : 0);
 
     const waMsg = encodeURIComponent(
-        `Olá! Usei a calculadora da Weid e gostaria de simular com mais detalhes.\n\nRenda: ${formatCurrency(renda)}\nEntrada: ${formatCurrency(entrada)}\nFGTS: ${hasFgts ? 'Sim' : 'Não'}\nPrograma estimado: ${programa}\nValor estimado: ${formatCurrency(total)}`
+        `Olá, Peterson! Usei a calculadora do site e gostaria de simular com mais detalhes.\n\nRenda R$: ${formatCurrency(renda)}\nEntrada R$: ${formatCurrency(entrada)}\nFGTS R$: ${hasFgts ? formatCurrency(fgtsValue) : '0'}\nPrograma: ${programa}\nPoder de Compra Real: ${formatCurrency(poderCompra)}`
     );
 
     return (
@@ -118,9 +122,21 @@ export function Calculator() {
                                         </span>
                                     </div>
                                     {hasFgts && (
-                                        <p style={{ fontSize: '0.8rem', color: '#94A3B8', marginTop: '0.5rem' }}>
-                                            Estimativa de FGTS: <span style={{ color: '#C9A96E' }}>{formatCurrency(fgts)}</span>
-                                        </p>
+                                        <div style={{ marginTop: '1.25rem', animation: 'fadeIn 0.3s' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                                                <label style={{ fontWeight: 600, color: '#fff' }}>Saldo do FGTS</label>
+                                                <span style={{ color: '#C9A96E', fontWeight: 700, fontSize: '1.1rem' }}>{formatCurrency(fgtsValue)}</span>
+                                            </div>
+                                            <input
+                                                type="range"
+                                                min={0} max={100000} step={1000}
+                                                value={fgtsValue}
+                                                onChange={e => { setFgtsValue(+e.target.value); triggerUpdate(); }}
+                                            />
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#64748B', marginTop: '0.25rem' }}>
+                                                <span>R$0</span><span>R$100.000</span>
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             </div>
@@ -129,7 +145,7 @@ export function Calculator() {
                             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                                 <div className={`calc-result ${updated ? 'updated' : ''}`}>
                                     <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                        Você pode financiar até
+                                        Poder de Compra (Valor do Imóvel)
                                     </div>
                                     <div style={{
                                         fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
@@ -139,10 +155,14 @@ export function Calculator() {
                                         marginBottom: '1rem',
                                         letterSpacing: '-0.02em',
                                     }}>
-                                        {formatCurrency(total)}
+                                        {formatCurrency(poderCompra)}
                                     </div>
 
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.625rem 0.875rem', background: 'rgba(255,255,255,0.05)', borderRadius: 10 }}>
+                                            <span style={{ color: '#94A3B8', fontSize: '0.875rem' }}>Limite de Financiamento</span>
+                                            <span style={{ color: '#fff', fontWeight: 700 }}>{formatCurrency(valorFinanciado)}</span>
+                                        </div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.625rem 0.875rem', background: 'rgba(255,255,255,0.05)', borderRadius: 10 }}>
                                             <span style={{ color: '#94A3B8', fontSize: '0.875rem' }}>Parcela estimada</span>
                                             <span style={{ color: '#fff', fontWeight: 700 }}>{formatCurrency(parcela)}/mês</span>

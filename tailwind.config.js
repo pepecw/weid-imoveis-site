@@ -7,12 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0066FF',    // Neon Blue
-        secondary: '#00C853',  // WhatsApp Green
-        dark: '#0a0a0a',       // Deep Dark
+        primary: '#C9A96E',    // Gold
+        secondary: '#25D366',  // WhatsApp Green
+        dark: '#0A1628',       // Custom Dark
+        gold: '#C9A96E',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // We'll need to import Inter or use system sans
+        sans: ["'Outfit'", 'system-ui', 'sans-serif'], // Sync with CSS
       },
     },
   },

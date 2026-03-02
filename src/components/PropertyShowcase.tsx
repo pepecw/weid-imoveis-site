@@ -10,7 +10,8 @@ const properties = [
         specs: "2 Quartos • 70m²",
         tag: "🔥 NOVIDADE",
         tagColor: "bg-orange-500",
-        price: "R$ 380.000"
+        price: "R$ 380.000",
+        codigo: "IMV0003"
     },
     {
         image: "https://images.unsplash.com/photo-1600596542815-e32cb130eb5b?auto=format&fit=crop&q=80&w=600",
@@ -19,7 +20,8 @@ const properties = [
         specs: "3 Quartos (1 Suíte) • 92m²",
         tag: "💎 OPORTUNIDADE",
         tagColor: "bg-blue-500",
-        price: "R$ 450.000"
+        price: "R$ 450.000",
+        codigo: "IMV0002"
     },
     {
         image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=600",
@@ -28,7 +30,8 @@ const properties = [
         specs: "3 Suítes • 140m²",
         tag: "✨ EXCLUSIVO",
         tagColor: "bg-purple-500",
-        price: "R$ 890.000"
+        price: "R$ 890.000",
+        codigo: "IMV0001"
     }
 ];
 
@@ -52,6 +55,7 @@ export const PropertyShowcase: React.FC = () => {
                                 <img
                                     src={prop.image}
                                     alt={prop.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
@@ -76,7 +80,7 @@ export const PropertyShowcase: React.FC = () => {
                             </div>
                             <button
                                 className="w-full py-3 bg-white/5 text-sm font-semibold text-white hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2"
-                                onClick={() => window.open(`https://wa.me/5547991523220?text=Tenho%20interesse%20no%20im%C3%B3vel%20${encodeURIComponent(prop.title)}`, '_blank')}
+                                onClick={() => window.open(`https://wa.me/5547991523220?text=${encodeURIComponent(`Olá, Peterson! Gostei muito do imóvel *${prop.title}* (Cód: ${prop.codigo}) e gostaria de saber mais.`)}`, '_blank')}
                             >
                                 <MessageCircle className="w-4 h-4" />
                                 Tenho Interesse
