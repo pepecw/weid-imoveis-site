@@ -12,14 +12,7 @@ export function Diferenciais({ onOpenQuiz }: DiferenciaisProps) {
         <section id="diferenciais" className="section">
             <div className="container">
                 {/* Quiz CTA Card */}
-                <div className="reveal glass-gold" style={{
-                    borderRadius: 24,
-                    padding: '3rem',
-                    textAlign: 'center',
-                    marginBottom: '5rem',
-                    position: 'relative',
-                    overflow: 'hidden',
-                }}>
+                <div className="reveal glass-gold px-6 py-8 md:p-12 text-center mb-16 relative overflow-hidden rounded-[24px]">
                     <div style={{
                         position: 'absolute', inset: 0,
                         background: 'radial-gradient(circle at 50% 50%, rgba(201,169,110,0.08), transparent 70%)',
@@ -33,7 +26,7 @@ export function Diferenciais({ onOpenQuiz }: DiferenciaisProps) {
                     <p className="body-lg" style={{ maxWidth: 480, margin: '0 auto 2rem' }}>
                         Responda 5 perguntas rápidas e receba opções personalizadas no seu WhatsApp
                     </p>
-                    <button onClick={onOpenQuiz} className="btn btn-gold-shimmer" style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}>
+                    <button onClick={onOpenQuiz} className="btn btn-gold-shimmer w-full md:w-auto" style={{ fontSize: '1.1rem', padding: '1rem 1.5rem' }}>
                         🚀 Começar Quiz Gratuito
                     </button>
                 </div>

@@ -68,7 +68,7 @@ export function Calculator() {
 
                 <div className="reveal" style={{ maxWidth: 800, margin: '0 auto' }}>
                     <div className="card-glass" style={{ padding: '2.5rem' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {/* Left: Inputs */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 {/* Renda */}

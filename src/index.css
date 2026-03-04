@@ -754,6 +754,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
    ============================================ */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -761,6 +762,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
   position: relative;
   overflow: hidden;
   padding-top: 5rem;
+  padding-bottom: 8rem;
+  /* Fix mobile button cut off */
 }
 
 .hero-content {

@@ -19,7 +19,7 @@ export function FooterMain() {
     return (
         <footer className="footer">
             <div className="container" style={{ padding: '4rem 1.5rem 2rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem', marginBottom: '3rem' }}>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
                     {/* Col 1 */}
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
