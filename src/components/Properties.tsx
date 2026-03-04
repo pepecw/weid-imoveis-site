@@ -25,12 +25,18 @@ export function Properties() {
                     {propertiesData.slice(0, 3).map((p, i) => (
                         <div key={p.id} className={`property-card flex flex-col h-full reveal reveal-delay-${i + 1}`}>
                             <div className="property-image relative h-56 overflow-hidden">
-                                <img
-                                    src={p.featuredImage}
-                                    alt={p.titulo}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
+                                {p.featuredImage ? (
+                                    <img
+                                        src={p.featuredImage}
+                                        alt={p.titulo}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-gradient-to-br from-[#0A1628] to-[#111] flex items-center justify-center border-b border-white/10 group-hover:scale-110 transition-transform duration-700">
+                                        <span className="text-[#C9A96E]/50 font-semibold text-sm flex items-center gap-2 opacity-70">📷 EM PREPARAÇÃO</span>
+                                    </div>
+                                )}
                                 <div className="absolute top-4 left-4 flex gap-2">
                                     {p.destaque_texto && (
                                         <span className="px-3 py-1 bg-primary/90 text-white text-xs font-bold rounded-full backdrop-blur-md">

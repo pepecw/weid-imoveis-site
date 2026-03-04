@@ -46,12 +46,18 @@ export function PropertiesPage() {
                         {filteredProperties.map((property) => (
                             <div key={property.id} className="bg-white/5 border border-white/10 flex flex-col h-full rounded-2xl overflow-hidden hover:bg-white/10 transition-all group">
                                 <div className="relative h-56 overflow-hidden">
-                                    <img
-                                        src={property.featuredImage}
-                                        alt={property.titulo}
-                                        loading="lazy"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
+                                    {property.featuredImage ? (
+                                        <img
+                                            src={property.featuredImage}
+                                            alt={property.titulo}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gradient-to-br from-[#0A1628] to-[#111] flex items-center justify-center border-b border-white/10 group-hover:scale-110 transition-transform duration-700">
+                                            <span className="text-[#C9A96E]/50 font-semibold text-sm flex items-center gap-2 opacity-70">📷 EM PREPARAÇÃO</span>
+                                        </div>
+                                    )}
                                     <div className="absolute top-4 left-4 flex gap-2">
                                         {property.destaque_texto && (
                                             <span className="px-3 py-1 bg-primary/90 text-white text-xs font-bold rounded-full backdrop-blur-md">

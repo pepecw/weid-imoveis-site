@@ -42,26 +42,33 @@ export function PropertyDetailsPage() {
                 </Link>
 
                 {/* Top Section: Gallery */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-8">
-                    {property.images.slice(0, 5).map((img, index) => (
-                        <div
-                            key={index}
-                            onClick={() => setLightboxIndex(index)}
-                            className={`rounded-xl overflow-hidden cursor-pointer border border-white/5 relative group ${index === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : 'hidden md:block'}`}
-                        >
-                            <img
-                                src={img}
-                                alt={`Foto ${index + 1}`}
-                                loading="lazy"
-                                className="w-full h-full object-cover aspect-[4/3] group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
-                            />
-                            {index === 0 && ( /* Ensure the first image is always visible to cover mobile screens properly */
-                                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                            )}
-                        </div>
-                    ))}
-                    {/* Mobile fallback for hidden items: allow clicking the main image to open gallery */}
-                </div>
+                {property.images && property.images.length > 0 ? (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-8">
+                        {property.images.slice(0, 5).map((img, index) => (
+                            <div
+                                key={index}
+                                onClick={() => setLightboxIndex(index)}
+                                className={`rounded-xl overflow-hidden cursor-pointer border border-white/5 relative group ${index === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : 'hidden md:block'}`}
+                            >
+                                <img
+                                    src={img}
+                                    alt={`Foto ${index + 1}`}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover aspect-[4/3] group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                                />
+                                {index === 0 && ( /* Ensure the first image is always visible to cover mobile screens properly */
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="w-full h-64 md:h-96 rounded-2xl bg-gradient-to-br from-[#0A1628] to-[#111] flex flex-col items-center justify-center border border-white/10 mb-8">
+                        <span className="text-4xl mb-4 opacity-50">📷</span>
+                        <span className="text-[#C9A96E]/70 font-semibold text-lg md:text-xl flex items-center gap-3">EM PREPARAÇÃO</span>
+                        <p className="text-gray-500 mt-2 text-sm text-center">As fotos deste imóvel estarão disponíveis em breve.</p>
+                    </div>
+                )}
 
                 <div className="grid lg:grid-cols-3 gap-12">
 
