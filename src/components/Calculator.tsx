@@ -67,10 +67,10 @@ export function Calculator() {
                 </div>
 
                 <div className="reveal" style={{ maxWidth: 800, margin: '0 auto' }}>
-                    <div className="card-glass" style={{ padding: '2.5rem' }}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="card-glass p-6 lg:p-12">
+                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
                             {/* Left: Inputs */}
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            <div className="flex-1 flex flex-col gap-6">
                                 {/* Renda */}
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
@@ -142,34 +142,27 @@ export function Calculator() {
                             </div>
 
                             {/* Right: Result */}
-                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                <div className={`calc-result ${updated ? 'updated' : ''}`}>
-                                    <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                        Poder de Compra (Valor do Imóvel)
+                            <div className="flex-1 flex flex-col justify-center">
+                                <div className={`rounded-3xl p-5 md:p-8 bg-black/20 border border-white/10 text-center transition-transform ${updated ? 'scale-105' : 'scale-100'}`}>
+                                    <div className="text-xs md:text-sm text-gray-400 mb-2 uppercase tracking-wider font-bold">
+                                        Poder de Compra Real
                                     </div>
-                                    <div style={{
-                                        fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
-                                        fontWeight: 900,
-                                        color: '#C9A96E',
-                                        lineHeight: 1.1,
-                                        marginBottom: '1rem',
-                                        letterSpacing: '-0.02em',
-                                    }}>
+                                    <div className="text-3xl md:text-5xl font-black text-secondary leading-tight mb-6">
                                         {formatCurrency(poderCompra)}
                                     </div>
 
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.625rem 0.875rem', background: 'rgba(255,255,255,0.05)', borderRadius: 10 }}>
-                                            <span style={{ color: '#94A3B8', fontSize: '0.875rem' }}>Limite de Financiamento</span>
-                                            <span style={{ color: '#fff', fontWeight: 700 }}>{formatCurrency(valorFinanciado)}</span>
+                                    <div className="flex flex-col gap-3 mb-8">
+                                        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center px-4 py-3 bg-white/5 rounded-xl border border-white/5">
+                                            <span className="text-gray-400 text-xs sm:text-sm">Financiamento Caixa</span>
+                                            <span className="text-white font-bold">{formatCurrency(valorFinanciado)}</span>
                                         </div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.625rem 0.875rem', background: 'rgba(255,255,255,0.05)', borderRadius: 10 }}>
-                                            <span style={{ color: '#94A3B8', fontSize: '0.875rem' }}>Parcela estimada</span>
-                                            <span style={{ color: '#fff', fontWeight: 700 }}>{formatCurrency(parcela)}/mês</span>
+                                        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center px-4 py-3 bg-white/5 rounded-xl border border-white/5">
+                                            <span className="text-gray-400 text-xs sm:text-sm">Parcela Estimada</span>
+                                            <span className="text-white font-bold">{formatCurrency(parcela)}/mês</span>
                                         </div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.625rem 0.875rem', background: 'rgba(201,169,110,0.08)', borderRadius: 10, border: '1px solid rgba(201,169,110,0.2)' }}>
-                                            <span style={{ color: '#94A3B8', fontSize: '0.875rem' }}>Programa</span>
-                                            <span style={{ color: '#C9A96E', fontWeight: 700, fontSize: '0.875rem' }}>{programa}</span>
+                                        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center px-4 py-3 bg-primary/10 rounded-xl border border-primary/20">
+                                            <span className="text-gray-400 text-xs sm:text-sm">Programa</span>
+                                            <span className="text-primary font-bold text-xs sm:text-sm tracking-wide">{programa}</span>
                                         </div>
                                     </div>
 
@@ -177,15 +170,14 @@ export function Calculator() {
                                         href={`${WA_LINK}${waMsg}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="btn btn-whatsapp"
-                                        style={{ width: '100%', fontSize: '0.9rem' }}
+                                        className="btn btn-whatsapp w-full flex items-center justify-center gap-2 py-4"
                                     >
-                                        💬 Simular com detalhes
+                                        <span className="text-xl">💬</span> Fazer Simulação Exata
                                     </a>
                                 </div>
 
-                                <p style={{ fontSize: '0.75rem', color: '#64748B', textAlign: 'center', marginTop: '1rem' }}>
-                                    * Estimativa simplificada. Sujeita à análise de crédito.
+                                <p className="text-xs text-gray-500 text-center mt-4">
+                                    * Valores aproximados sujeitos à análise da Caixa
                                 </p>
                             </div>
                         </div>

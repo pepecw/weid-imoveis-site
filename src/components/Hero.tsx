@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { propertiesData } from '../data/properties';
 
@@ -22,25 +22,13 @@ function abbreviateCity(city: string) {
 }
 
 export function Hero({ onOpenQuiz }: HeroProps) {
-    const heroRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
     const [city, setCity] = useState('');
     const [type, setType] = useState('');
     const [price, setPrice] = useState('');
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (heroRef.current) {
-                const scrollY = window.scrollY;
-                heroRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
-                heroRef.current.style.opacity = `${1 - scrollY / 700}`;
-            }
-        };
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
+    // Removemos o efeito de parallax scroll que sobrepunha a segunda página
     const handleScroll = (href: string) => {
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -90,7 +78,7 @@ export function Hero({ onOpenQuiz }: HeroProps) {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-dark/60 via-dark/80 to-dark" style={{ zIndex: 1, pointerEvents: 'none' }} />
 
-            <div ref={heroRef} className="hero-content relative z-10">
+            <div className="hero-content relative z-10">
                 <div className="hero-logo">
                     <div className="hero-logo-icon">W</div>
                     <span className="hero-logo-text">
