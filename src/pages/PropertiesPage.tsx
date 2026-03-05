@@ -18,6 +18,7 @@ export function PropertiesPage() {
     const [showMobileFilters, setShowMobileFilters] = useState(false);
 
     const cityFilter = searchParams.get('cidade') || '';
+    const neighborhoodFilter = searchParams.get('bairro') || '';
     const typeFilter = searchParams.get('tipo') || '';
     const priceFilter = searchParams.get('preco') || '';
     const bedsFilter = searchParams.get('quartos') || '';
@@ -28,6 +29,15 @@ export function PropertiesPage() {
         return [...new Set(cities)].sort();
     }, []);
 
+    const availableNeighborhoods = useMemo(() => {
+        let items = propertiesData;
+        if (cityFilter) {
+            items = items.filter(p => p.cidade === cityFilter);
+        }
+        const neighborhoods = items.map(p => p.bairro).filter(Boolean);
+        return [...new Set(neighborhoods)].sort();
+    }, [cityFilter]);
+
     const availableTypes = useMemo(() => {
         const types = propertiesData.map(p => p.tipo_imovel).filter(Boolean);
         return [...new Set(types)].sort();
@@ -35,6 +45,7 @@ export function PropertiesPage() {
 
     const filteredProperties = propertiesData.filter(p => {
         if (cityFilter && p.cidade !== cityFilter) return false;
+        if (neighborhoodFilter && p.bairro !== neighborhoodFilter) return false;
         if (typeFilter && p.tipo_imovel !== typeFilter) return false;
         if (priceFilter) {
             const range = PRICE_RANGES.find(r => r.value === priceFilter);
@@ -57,6 +68,12 @@ export function PropertiesPage() {
         } else {
             current.delete(key);
         }
+
+        // Se trocar de cidade, zere o bairro pois pode não existir lá
+        if (key === 'cidade') {
+            current.delete('bairro');
+        }
+
         setSearchParams(current);
     };
 
@@ -110,6 +127,23 @@ export function PropertiesPage() {
                                     ))}
                                 </select>
                             </div>
+
+                            {/* Bairro (Só aparece se uma cidade for escolhida) */}
+                            {cityFilter && availableNeighborhoods.length > 0 && (
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Bairro</label>
+                                    <select
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary/50 focus:outline-none appearance-none"
+                                        value={neighborhoodFilter}
+                                        onChange={(e) => updateFilter('bairro', e.target.value)}
+                                    >
+                                        <option value="" className="bg-[#0A1628]">Todos os bairros</option>
+                                        {availableNeighborhoods.map(b => (
+                                            <option key={b} value={b} className="bg-[#0A1628]">{b}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
 
                             {/* Tipo */}
                             <div>
