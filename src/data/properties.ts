@@ -17,7 +17,6 @@ export interface Property {
     aceita_financiamento?: boolean;
     aceita_permuta?: boolean;
     descricao_ia?: string;
-    composicao?: string[];
     condicoes_pagamento?: string;
     previsao_entrega?: string;
     destaque_texto?: string;

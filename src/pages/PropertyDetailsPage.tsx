@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { propertiesData } from '../data/properties';
-import { MapPin, Bed, Bath, Car, Maximize, ArrowLeft, Send, X, ChevronLeft, ChevronRight, CheckCircle2, Home, Calendar, Info, Layers } from 'lucide-react';
+import { MapPin, Bed, Bath, Car, Maximize, ArrowLeft, Send, X, ChevronLeft, ChevronRight, CheckCircle2, Home, Calendar, Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const WA_BASE = 'https://wa.me/5547991523220?text=';
@@ -217,24 +217,7 @@ export function PropertyDetailsPage() {
                             </div>
                         )}
 
-                        {/* Composition */}
-                        {property.composicao && property.composicao.length > 0 && (
-                            <div>
-                                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                                    <Layers className="text-primary" size={20} />
-                                    Composição
-                                </h2>
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    {property.composicao.map((item, idx) => (
-                                        <li key={idx} className="flex gap-3 text-gray-300 bg-white/5 p-4 rounded-xl border border-white/5">
-                                            <CheckCircle2 className="text-primary shrink-0 mt-0.5" size={18} />
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
+                        {/* Removed Composition block */}
                         {/* Leisure standard */}
                         {property.lazer_padrao && (
                             <div className="mb-4">
