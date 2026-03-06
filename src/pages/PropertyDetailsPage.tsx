@@ -9,10 +9,24 @@ export function PropertyDetailsPage() {
     const { id } = useParams();
     const property = propertiesData.find(p => p.id === id);
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+    const [showSwipeHint, setShowSwipeHint] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        // Show swipe hint after a delay if not previously dismissed
+        if (!localStorage.getItem('weid_swipe_hint')) {
+            const timer = setTimeout(() => setShowSwipeHint(true), 2500);
+            return () => clearTimeout(timer);
+        }
     }, [id]);
+
+    const dismissSwipeHint = () => {
+        if (showSwipeHint) {
+            setShowSwipeHint(false);
+            localStorage.setItem('weid_swipe_hint', 'true');
+        }
+    };
 
     if (!property) {
         return (
@@ -43,24 +57,89 @@ export function PropertyDetailsPage() {
 
                 {/* Top Section: Gallery */}
                 {property.images && property.images.length > 0 ? (
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-8">
-                        {property.images.slice(0, 5).map((img, index) => (
+                    <div className="mb-8">
+
+                        {/* Desktop Gallery (Grid) */}
+                        <div className="hidden md:grid grid-cols-4 gap-3">
+                            {property.images.slice(0, 5).map((img, index) => (
+                                <div
+                                    key={`desktop-${index}`}
+                                    onClick={() => setLightboxIndex(index)}
+                                    className={`rounded-xl overflow-hidden cursor-pointer border border-white/5 relative group ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
+                                >
+                                    <img
+                                        src={img}
+                                        alt={`Foto ${index + 1}`}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover aspect-[4/3] group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                                    />
+                                    {index === 0 && (
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Mobile Gallery (Swipeable Carousel) */}
+                        <div className="md:hidden flex flex-col gap-2">
+                            {/* Main Carousel Strip */}
                             <div
-                                key={index}
-                                onClick={() => setLightboxIndex(index)}
-                                className={`rounded-xl overflow-hidden cursor-pointer border border-white/5 relative group ${index === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : 'hidden md:block'}`}
+                                className="flex overflow-x-auto snap-x snap-mandatory rounded-xl relative"
+                                onScroll={dismissSwipeHint}
+                                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                             >
-                                <img
-                                    src={img}
-                                    alt={`Foto ${index + 1}`}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover aspect-[4/3] group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
-                                />
-                                {index === 0 && ( /* Ensure the first image is always visible to cover mobile screens properly */
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                                {property.images.map((img, index) => (
+                                    <div
+                                        key={`mobile-${index}`}
+                                        onClick={() => setLightboxIndex(index)}
+                                        className="w-full flex-shrink-0 snap-center relative aspect-[4/3]"
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Foto ${index + 1}`}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm shadow-xl text-white text-xs px-2 py-1 rounded-md font-medium tracking-widest border border-white/10">
+                                            {index + 1} / {property.images?.length}
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {/* Swipe Hint Overlay */}
+                                {showSwipeHint && property.images.length > 1 && (
+                                    <div
+                                        className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                                    >
+                                        <div
+                                            className="bg-black/70 backdrop-blur-md border border-white/20 shadow-2xl text-white px-5 py-3 rounded-full text-sm font-semibold flex items-center gap-2 animate-pulse pointer-events-auto"
+                                            onClick={dismissSwipeHint}
+                                        >
+                                            Deslize para ver mais <ChevronRight size={18} className="text-primary" />
+                                        </div>
+                                    </div>
                                 )}
                             </div>
-                        ))}
+
+                            {/* Mobile Thumbnails Row */}
+                            <div className="flex gap-2 overflow-x-auto snap-x pb-2 pt-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                {property.images.map((img, index) => (
+                                    <div
+                                        key={`thumb-${index}`}
+                                        onClick={() => setLightboxIndex(index)}
+                                        className="w-[72px] h-[72px] flex-shrink-0 snap-start rounded-lg overflow-hidden border-2 border-transparent active:border-primary/50 opacity-80 hover:opacity-100 transition-all active:scale-95"
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Thumb ${index + 1}`}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                     </div>
                 ) : (
                     <div className="w-full h-64 md:h-96 rounded-2xl bg-gradient-to-br from-[#0A1628] to-[#111] flex flex-col items-center justify-center border border-white/10 mb-8">
