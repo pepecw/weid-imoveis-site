@@ -18,6 +18,7 @@ import { AdminShell } from './admin/AdminShell';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
 import { AdminCadastrar } from './admin/pages/AdminCadastrar';
 import { AdminCopys } from './admin/pages/AdminCopys';
+import { LeadsKanban } from './admin/pages/LeadsKanban';
 
 const WA_FLOAT = 'https://wa.me/5547991523220?text=' + encodeURIComponent('Olá, Peterson! Vim pelo site da Weid Imóveis e gostaria de conversar.');
 
@@ -60,6 +61,7 @@ function AdminArea() {
         <Route path="/admin" element={<AdminShell><AdminDashboard /></AdminShell>} />
         <Route path="/admin/cadastrar" element={<AdminShell><AdminCadastrar /></AdminShell>} />
         <Route path="/admin/copys" element={<AdminShell><AdminCopys /></AdminShell>} />
+        <Route path="/admin/leads" element={<AdminShell><LeadsKanban /></AdminShell>} />
       </Routes>
     </AuthProvider>
   );

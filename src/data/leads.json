@@ -1,0 +1,139 @@
+[
+    {
+        "id": "1042",
+        "nome": "Carlos M.",
+        "temperatura": "Quente",
+        "status": "Em Atendimento",
+        "resumo_ia": "Cliente com perfil sólido, entrada confirmada de R$ 85k e renda compatível com financiamento MCMV. Interesse forte em casas com quintal no Bairro Cubatão. Urgência alta — quer fechar em 30 dias.",
+        "interesse_bairros": [
+            "Cubatão",
+            "Itinga",
+            "Iperoba"
+        ],
+        "entrada": 85000,
+        "orcamento_max": 320000,
+        "renda": 5800,
+        "urgencia": "Alta",
+        "followup_status": "Aguardando resposta",
+        "data_proximo_contato": "2026-03-07T00:00:00.000Z"
+    },
+    {
+        "id": "1087",
+        "nome": "Fernanda O.",
+        "temperatura": "Quente",
+        "status": "Visita",
+        "resumo_ia": "Visita agendada para sábado no IMV0038. Cliente muito animada, marido aprovou as fotos. Procura apartamento 2 quartos com vaga de garagem em Joinville.",
+        "interesse_bairros": [
+            "Centro",
+            "Anita Garibaldi",
+            "Saguaçu"
+        ],
+        "entrada": 60000,
+        "orcamento_max": 280000,
+        "renda": 4200,
+        "urgencia": "Alta",
+        "followup_status": "Visita Confirmada",
+        "data_proximo_contato": "2026-03-10T00:00:00.000Z"
+    },
+    {
+        "id": "1103",
+        "nome": "Roberto S.",
+        "temperatura": "Quente",
+        "status": "Proposta",
+        "resumo_ia": "Proposta enviada para o IMV0001. Cliente aguardando retorno do banco para confirmar financiamento. Restrição leve no CPF que deve ser limpa em 60 dias. Não tem urgência mas está comprometido.",
+        "interesse_bairros": [
+            "Centro",
+            "Araquari"
+        ],
+        "entrada": 67000,
+        "orcamento_max": 180000,
+        "renda": 3500,
+        "urgencia": "Média",
+        "followup_status": "Proposta Enviada",
+        "data_proximo_contato": "2026-03-12T00:00:00.000Z"
+    },
+    {
+        "id": "1055",
+        "nome": "Aline P.",
+        "temperatura": "Morno",
+        "status": "Em Atendimento",
+        "resumo_ia": "Cliente em fase de pesquisa, ainda comparando regiões. Prefere Araquari por ser próximo ao trabalho. Tem FGTS disponível mas ainda não consultou banco para saber o limite de financiamento.",
+        "interesse_bairros": [
+            "Araquari",
+            "Barra do Rio"
+        ],
+        "entrada": 30000,
+        "orcamento_max": 220000,
+        "renda": 3200,
+        "urgencia": "Média",
+        "followup_status": "Aguardando retorno",
+        "data_proximo_contato": "2026-03-15T00:00:00.000Z"
+    },
+    {
+        "id": "1061",
+        "nome": "Diego F.",
+        "temperatura": "Morno",
+        "status": "Em Atendimento",
+        "resumo_ia": "Primeiro imóvel, muito ansioso mas sem entrada suficiente ainda. Quer guardar mais uns 3 meses. Perfil MCMV, renda de 2 salários. Gostou das opções do programa Minha Casa.",
+        "interesse_bairros": [
+            "Iperoba",
+            "Itinga"
+        ],
+        "entrada": 15000,
+        "orcamento_max": 160000,
+        "renda": 2400,
+        "urgencia": "Baixa",
+        "followup_status": "Em espera",
+        "data_proximo_contato": "2026-03-20T00:00:00.000Z"
+    },
+    {
+        "id": "1078",
+        "nome": "Mariana T.",
+        "temperatura": "Morno",
+        "status": "Visita",
+        "resumo_ia": "Quer visitar pelo menos 3 imóveis antes de decidir. Já foi em um, gostou parcialmente. Procura 3 quartos obrigatório, pois tem 2 filhos. Tem paciência mas está buscando há 4 meses.",
+        "interesse_bairros": [
+            "Cubatão",
+            "Saguaçu",
+            "Anita Garibaldi"
+        ],
+        "entrada": 45000,
+        "orcamento_max": 350000,
+        "renda": 6500,
+        "urgencia": "Média",
+        "followup_status": "Visita Pendente",
+        "data_proximo_contato": "2026-03-09T00:00:00.000Z"
+    },
+    {
+        "id": "1021",
+        "nome": "Paulo H.",
+        "temperatura": "Frio",
+        "status": "Em Atendimento",
+        "resumo_ia": "Lead que entrou pelo Instagram há 45 dias. Respondeu poucas mensagens. Interesse indefinido, hora quer casa hora quer terreno. Baixíssima probabilidade de conversão no curto prazo.",
+        "interesse_bairros": [
+            "Qualquer região"
+        ],
+        "entrada": 20000,
+        "orcamento_max": 200000,
+        "renda": 2800,
+        "urgencia": "Baixa",
+        "followup_status": "Sem resposta",
+        "data_proximo_contato": "2026-03-01T00:00:00.000Z"
+    },
+    {
+        "id": "1033",
+        "nome": "Juliana R.",
+        "temperatura": "Frio",
+        "status": "Em Atendimento",
+        "resumo_ia": "Entrou pelo site, pediu simulação mas não respondeu mais após receber. Possível que esteja sendo atendida por outro corretor. Aguardando reativação automática.",
+        "interesse_bairros": [
+            "Centro"
+        ],
+        "entrada": 50000,
+        "orcamento_max": 300000,
+        "renda": 5000,
+        "urgencia": "Baixa",
+        "followup_status": "Reativação pendente",
+        "data_proximo_contato": "2026-02-28T00:00:00.000Z"
+    }
+]
