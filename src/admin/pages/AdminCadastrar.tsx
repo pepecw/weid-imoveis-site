@@ -2,7 +2,7 @@ import { useRef, useState, useCallback } from 'react';
 import {
     Camera, Home, UtensilsCrossed, BedDouble, Bath, Car, TreePine,
     Sofa, Image as ImageIcon, CheckCircle2, Trash2, RotateCcw,
-    Copy, MessageCircle, KeyRound, CloudUpload, Loader2,
+    Copy, MessageCircle, CloudUpload, Loader2,
     AlertCircle, ChevronRight, FolderOpen
 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';

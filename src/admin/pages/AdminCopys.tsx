@@ -2,8 +2,8 @@ import { useState, useMemo } from 'react';
 import {
     Sparkles, Copy, CheckCheck, Calculator,
     ChevronDown, ChevronUp, Building2, MapPin,
-    BedDouble, Bath, Car, TrendingUp, Info,
-    Percent, DollarSign, Calendar, Landmark, Users
+    Info,
+    Percent, DollarSign, Landmark, Users
 } from 'lucide-react';
 import propertiesData from '../../data/properties.json';
 
@@ -287,7 +287,6 @@ function CalcTab() {
             totalPago = parcela * meses;
         } else {
             // Soma da PA no SAC
-            const ultimaParcela = calcPrimeiraParcelaSAC(financiado, faixa.juros, 1); // rough approx
             totalPago = ((primeiraParcelaSAC + (financiado / meses)) * meses) / 2 + financiado;
         }
 

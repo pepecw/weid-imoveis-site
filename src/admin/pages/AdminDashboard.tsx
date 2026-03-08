@@ -111,7 +111,7 @@ export function AdminDashboard() {
         setContacts(prev => {
             const updated = {
                 ...prev,
-                [id]: { nome: '', telefone: '', papel: 'Dono' as const, endereco: '', ...prev[id], ...patch },
+                [id]: { ...{ nome: '', telefone: '', papel: 'Dono' as const, endereco: '' }, ...prev[id], ...patch },
             };
             saveContacts(updated);
             return updated;
