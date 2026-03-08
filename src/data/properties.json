@@ -141,11 +141,8 @@
     "quartos": 0,
     "banheiros": 0,
     "vagas_garagem": 0,
-    "featuredImage": "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_4g3q9j4g3q9j4g3q.png",
-    "images": [
-      "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_4g3q9j4g3q9j4g3q.png",
-      "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_kq023gkq023gkq02.png"
-    ],
+    "featuredImage": "",
+    "images": [],
     "codigo_interno": "IMV0001",
     "destaque_texto": "",
     "descricao_ia": "Terreno localizado em Araquari, no bairro Centro, próximo à Faculdade Federal. O imóvel possui 220m² de área total e privativa. Ótima oportunidade para investimento ou construção em região estratégica.",
