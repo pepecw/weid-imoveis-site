@@ -1,33 +1,32 @@
 [
   {
-    "id": "imv-38",
-    "titulo": "Terreno em Araquari - Centro",
-    "tipo_imovel": "Terreno",
-    "bairro": "Centro",
-    "cidade": "Araquari",
-    "valor_venda": 180000,
+    "id": "imv-43",
+    "titulo": "Residencial Jardim dos Príncipes - João Costa",
+    "tipo_imovel": "Apartamento",
+    "bairro": "João Costa",
+    "cidade": "Joinville",
+    "valor_venda": 242990,
     "status": "Disponível",
-    "area_principal": 220,
-    "quartos": 0,
-    "banheiros": 0,
-    "vagas_garagem": 0,
-    "featuredImage": "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_4g3q9j4g3q9j4g3q.png",
-    "images": [
-      "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_4g3q9j4g3q9j4g3q.png",
-      "https://qvkcngsfzelupqsbxttq.supabase.co/storage/v1/object/public/imoveis/IMV0001/fotos/Gemini_Generated_Image_kq023gkq023gkq02.png"
-    ],
-    "codigo_interno": "IMV0001",
-    "destaque_texto": "",
-    "descricao_ia": "Terreno localizado em Araquari, no bairro Centro, próximo à Faculdade Federal. O imóvel possui 220m² de área total e privativa. Ótima oportunidade para investimento ou construção em região estratégica.",
+    "area_principal": 39,
+    "quartos": 2,
+    "banheiros": 1,
+    "vagas_garagem": 1,
+    "featuredImage": "",
+    "images": [],
+    "codigo_interno": "IMV0005",
+    "destaque_texto": "LANÇAMENTO IMPERDÍVEL",
+    "descricao_ia": "Lançamento imperdível no Bairro João Costa. O Residencial Jardim dos Príncipes oferece conforto e qualidade de vida, com opções de unidades com Giardino (jardim privativo). Localização privilegiada próxima à Escola Municipal Professor Saul Sant'Anna de Oliveira Dias, CEI Antônio Brühmüller, Panificadora Bertotti e Komprão Koch Atacadista. Registro de Incorporação: R-5-55.626.",
     "composicao": [
-      "Terreno com 22m de frente e 10m de abertura. Área total de 220m²."
+      "Apartamento com 2 dormitórios",
+      "sala",
+      "cozinha e banheiro. Opções com Giardino. Espaço Pet e Bicicletário disponíveis no condomínio."
     ],
-    "condicoes_pagamento": "Entrada de R$ 67.000,00 + 78 parcelas",
+    "condicoes_pagamento": "A partir de R$ 242.990,00. Aceita financiamento.",
     "imovel_padrao": "Medio",
-    "lazer_padrao": "",
-    "aceita_financiamento": false,
+    "lazer_padrao": "Playground,Churrasqueira",
+    "aceita_financiamento": true,
     "aceita_permuta": false,
     "suites": 0,
-    "previsao_entrega": ""
+    "previsao_entrega": "Julho/2028"
   }
 ]
